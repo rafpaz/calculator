@@ -1,21 +1,15 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
-const Button = (props) => {
-    return (
-        <input
-            type="button"
-            className={props.type === 'action' ? 'button action-button' : 'button input-button'}
-            onClick={props.handleClick}
-            value={props.label}
-        />
-    );
-}
+class Button extends Component {
+    handleChange(){
+        this.props.clickBtn(this.props.value);
+    }
 
-Button.propTypes = {
-    type: PropTypes.string.isRequired,
-    handleClick: PropTypes.func.isRequired,
-    label: PropTypes.string.isRequired
+    render(){
+        return (
+            <span className="btn btn-primary btn-calculator" onClick={this.handleChange.bind(this)}>{this.props.value}</span>
+        )
+    }
 }
 
 export default Button;
